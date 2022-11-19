@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+telegram:
+  username: "@ApplicationHelperBot"
+  botToken: 5961427565:AAGSzRKM-KfY7ZiVfCaNQ6_VxkniGNKB-Xs
+  webHookPath:
+  telegramUrl: https://api.telegram.org/bot
+  botPath: webhook
+
+
