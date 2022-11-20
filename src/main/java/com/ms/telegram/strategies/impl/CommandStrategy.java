@@ -10,12 +10,13 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Service
 @Slf4j
 public class CommandStrategy implements MessageStrategy {
-    @Override
     public SendMessage process(Update message) {
-        return null;
+        return SendMessage.builder()
+                .chatId(message.getMessage().getChatId().toString())
+                .text("Ok command")
+                .build();
     }
 
-    @Override
     public StrategyType getType() {
         return StrategyType.COMMAND;
     }

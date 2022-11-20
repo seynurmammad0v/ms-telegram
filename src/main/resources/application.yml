@@ -3,9 +3,8 @@ server:
 
 telegram:
   username: "@ApplicationHelperBot"
-  botToken: 5961427565:AAGSzRKM-KfY7ZiVfCaNQ6_VxkniGNKB-Xs
+  botToken: ""
   webHookPath: https://www.mstelegrambot.com/
-  telegramUrl: https://api.telegram.org/bot
   botPath: webhook
 
 

@@ -12,10 +12,12 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Slf4j
 public class InputStrategy implements MessageStrategy {
 
-
     @Override
     public SendMessage process(Update message) {
-        return null;
+        return SendMessage.builder()
+                .chatId(message.getMessage().getChatId().toString())
+                .text("Ok input")
+                .build();
     }
 
     @Override

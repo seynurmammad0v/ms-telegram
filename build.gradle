@@ -26,7 +26,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// https://mvnrepository.com/artifact/org.telegram/telegrambots-spring-boot-starter
+	//https://mvnrepository.com/artifact/org.telegram/telegrambots-spring-boot-starter
 	implementation 'org.telegram:telegrambots-spring-boot-starter:6.3.0'
 
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"

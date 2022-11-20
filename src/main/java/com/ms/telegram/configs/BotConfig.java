@@ -1,48 +1,34 @@
 package com.ms.telegram.configs;
 
 import com.ms.telegram.TelegramBot;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Setter
-@Getter
 @Configuration
-@ConfigurationProperties(prefix = "telegram.bot")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BotConfig {
-    private String webHookPath;
-    private String botUserName;
-    private String botToken;
-    private String botPath;
 
-    public final List<BotCommand> commands;
+    private final List<BotCommand> commands;
+    private final Environment env;
 
     @Bean
     public TelegramBot telegramBot() throws TelegramApiException {
         TelegramBot bot = TelegramBot.builder()
-                .botPath(botPath)
-                .botUsername(botUserName)
-                .botToken(botToken)
+                .path(env.getProperty("telegram.botPath"))
+                .username(env.getProperty("telegram.username"))
+                .token(env.getProperty("telegram.botToken"))
                 .build();
-
-        bot.setWebhook(new SetWebhook(webHookPath));
+        bot.setWebhook(new SetWebhook(env.getProperty("telegram.webHookPath", "")));
+        bot.execute(SetMyCommands.builder().commands(commands).build());
         return bot;
-    }
-
-    @PostConstruct
-    public void setCommands() throws TelegramApiException {
-        telegramBot().execute(SetMyCommands.builder().commands(commands).build());
     }
 
 }
