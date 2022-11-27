@@ -6,5 +6,5 @@ public enum StrategyType {
     CONTACT,
     INPUT,
     REPLY,
-    UNKNOWN;
+    NOT_FOUND
 }

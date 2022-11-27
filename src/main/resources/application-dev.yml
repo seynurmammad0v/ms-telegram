@@ -3,6 +3,17 @@ server:
 
 telegram:
   username: "@ApplicationHelperBot"
-  botToken: ""
-  webHookPath: https://ce49-5-197-192-120.in.ngrok.io
+  botToken: <token>
+  webHookPath: <path>
   botPath: webhook
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url:  jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: pass
+    driverClassName: org.postgresql.Driver
